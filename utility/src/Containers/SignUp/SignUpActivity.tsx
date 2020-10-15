@@ -1,9 +1,12 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { Switch, TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import RoundCheckbox from 'rn-round-checkbox';
 
 const SignUpActivity:React.FC=()=>{
+
+    const navigation = useNavigation();
     return (
         <SafeAreaView style={styles.container}>
             <View>
@@ -22,7 +25,7 @@ const SignUpActivity:React.FC=()=>{
                 <Text>Confirm Password</Text>
                 <TextInput placeholder="Repeat Password" style={styles.input}/>
             </View>
-            <View>
+            <View style={styles.roundcheckbox}>
                 <RoundCheckbox  size={20}/>
                 <Text>I agree with all terms and conditions</Text>
             </View>
@@ -33,7 +36,7 @@ const SignUpActivity:React.FC=()=>{
             <TouchableOpacity style={styles.btn}><Text style={styles.btntext}>Sign Up</Text></TouchableOpacity>
             <Text style={styles.baseText}>
                 Already have an account ?
-                <Text style={styles.innerText}> Log In</Text>
+                <Text style={styles.innerText} onPress={()=>navigation.navigate('LoginActivity')}> Log In</Text>
             </Text>
         </SafeAreaView>
     );
@@ -80,6 +83,12 @@ const styles = StyleSheet.create({
       aggrement:{
         display:"flex",
         flexDirection:"row",
+        justifyContent:"space-between",
+      },
+
+      roundcheckbox:{
+        display:"flex",
+        flexDirection:'row',
         justifyContent:"space-between",
       },
 });

@@ -1,20 +1,24 @@
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { ClippingRectangle, Image, StyleSheet, Text, View } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
-import {CarouselData} from '../../Constants/Carousel.Constant.Data';
 import { CarouselDataType } from '../../Constants/CarouselDataType';
 
 interface SplashType{
-    CarouselData : CarouselDataType[]
+    Item : CarouselDataType[]
 }
 
-const SplashScreen: React.FC=()=>{
+const SplashScreen: React.FC<SplashType>=(props)=>{
 
-    function renderItem (item:any) {
+    function renderItem ({item}:{item:CarouselDataType}) {
         return (
             <View style={styles.carouselcontainer}>
-                <Text style={styles.title}>{ item.title }</Text>
-                <Text style={styles.description}>{item.description}</Text>
+                <View style={styles.imgcontainer}>
+                    <Image style={styles.image} source={item.img} />
+                </View>
+                <View style={styles.txtcontainer}>
+                    <Text style={styles.title}>{ item.title }</Text>
+                    <Text style={styles.description}>{item.description}</Text>
+                </View>
             </View>
         );
     }
@@ -22,10 +26,11 @@ const SplashScreen: React.FC=()=>{
     return (
         <View>
             <Carousel 
-                data={CarouselData}
+                data={props.Item}
                 sliderWidth={300}
                 itemWidth={300}
                 renderItem={renderItem}
+                showsHorizontalScrollIndicator={true}
             />
         </View>
     );
@@ -33,21 +38,39 @@ const SplashScreen: React.FC=()=>{
 
 const styles = StyleSheet.create({
     title:{
-        fontSize:20,
+        fontSize:15,
+        color:'dodgerblue',
+        textAlign:"center",
     },
 
     description:{
-        fontSize:15,
+        fontSize:13,
+        textAlign:"center",
+        color:'dodgerblue',
     },
 
-    carouselcontainer:{
-        backgroundColor:'blue',
+    carouselcontainer:{        
         width:'100%',
         height:'100%',
         display:"flex",
         justifyContent:"center",
         alignItems:"center",
     },
+    image:{
+        width:'100%',
+        height:'100%',
+    },
+    imgcontainer:{
+        height:'70%',
+        width:'100%',
+        display:'flex',
+        justifyContent:"center",
+        alignItems:"center"
+    },
+    txtcontainer:{
+        height:'10%',
+        width:'100%',
+    }
 
 });
 

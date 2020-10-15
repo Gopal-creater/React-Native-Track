@@ -1,6 +1,4 @@
-import { CarouselDataType } from "./CarouselDataType";
-
-export const CarouselData:CarouselDataType[]= [
+export const CarousalData= [
     {
       title: "Find Services Near You",
       description:'Search for local and international services and browse different categories',
@@ -16,4 +14,5 @@ export const CarouselData:CarouselDataType[]= [
       description:'No need to wait and communicate with service providers instantly',
       img:require('../assets/carousel3.png'),
     },
-  ];
+  ]
+
