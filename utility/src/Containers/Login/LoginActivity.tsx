@@ -43,7 +43,7 @@ const LoginActivity:React.FC=()=>{
                     <TextInput placeholder="Password" style={styles.input} secureTextEntry={true} textContentType={'password'} />
                 </View>
 
-                <TouchableOpacity style={styles.btn}><Text style={styles.btntext}>Log In</Text></TouchableOpacity>
+                <TouchableOpacity onPress={()=>navigation.navigate('Home')} style={styles.btn}><Text style={styles.btntext}>Log In</Text></TouchableOpacity>
 
                 <TouchableOpacity onPress={onOpenForgotPassword} ><Text style={styles.signuptext}>Forgot Password</Text></TouchableOpacity>
 

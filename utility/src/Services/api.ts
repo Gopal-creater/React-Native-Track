@@ -3,7 +3,7 @@ import axios from 'axios';
 import { API_BASE_URL } from '../Config/Settings';
 
 export async function getData(url:string) {
-    const response = await axios.get(API_BASE_URL+url);
+    const response = await axios.get(url);
     return response.data   
 }
 
